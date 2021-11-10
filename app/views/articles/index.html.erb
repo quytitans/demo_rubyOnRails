@@ -1,0 +1,37 @@
+<% content_for :title do %>
+  List
+<% end %>
+<div class="container">
+  <h1>Articles list</h1>
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <th> <%= article.id %></th>
+        <th> <%= article.title %></th>
+        <th> <%= article.body %></th>
+        <th><%= link_to "Detail", article %></th>
+        <th><%= link_to "Edit", edit_article_path(article) %></th>
+        <th><%= link_to "Destroy", article_path(article),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>
+        </th>
+      </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+  <%= link_to "New Article", new_article_path, class:"btn btn-outline-dark"%>
+
+</div>
+
